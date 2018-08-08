@@ -5,4 +5,4 @@ run:
 	docker run \
         --link redis:redis \
         -p 8000:8000 \
-        short-service
+        -d short-service
