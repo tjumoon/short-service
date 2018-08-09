@@ -18,7 +18,7 @@ install:
 - ssh root@${REMOTE_IP} 'tar -jxvf short-service.tar.bz2 -C ./go/src/'
 
 script:
-- ssh root@{REMOTE_IP} 'cd ./go/src/short-service && make build && make run'
+- ssh root@${REMOTE_IP} 'cd ./go/src/short-service && make build && make run'
 
 branches:
   only:
