@@ -1,28 +1,24 @@
 language: go
 go:
-  - master
+- master
 addons:
   apt:
     packages:
     - xvfb
-  ssh_know_hosts: ${REMOTE_IP}
-
+  ssh_know_hosts: "${REMOTE_IP}"
 before_install:
-  - openssl aes-256-cbc -K $encrypted_b654a88fad19_key -iv $encrypted_b654a88fad19_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
-  - chmod 600 ~/.ssh/id_rsa
-
+- openssl aes-256-cbc -K $encrypted_b654a88fad19_key -iv $encrypted_b654a88fad19_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
 install:
-  - cd ..
-  - tar -jcvf short-service.tar.bz2 ./short-service
-  - scp short-service.tar.bz2 root@${REMOTE_IP}:~/
-  - ssh root@${REMOTE_IP} 'mkdir -p short-service && tar -jxvf short-service.tar.bz2 -C short-service && cd short-service'
-
+- cd ..
+- tar -jcvf short-service.tar.bz2 ./short-service
+- scp short-service.tar.bz2 root@${REMOTE_IP}:~/
+- ssh root@${REMOTE_IP} 'mkdir -p short-service && tar -jxvf short-service.tar.bz2
+  -C short-service && cd short-service'
 after_success:
-  - make build
-  - make run
+- make build
+- make run
 branches:
   only:
-    - master
-
-
-
+  - master
