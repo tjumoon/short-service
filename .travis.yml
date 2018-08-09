@@ -13,9 +13,9 @@ install:
 - scp -o stricthostkeychecking=no short-service.tar.bz2 root@${REMOTE_IP}:~/
 - ssh root@${REMOTE_IP} 'mkdir -p short-service && tar -jxvf short-service.tar.bz2
   -C short-service && cd short-service'
-after_success:
 - make build
 - make run
+
 branches:
   only:
   - master
