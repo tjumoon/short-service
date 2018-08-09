@@ -11,8 +11,9 @@ install:
 - cd ..
 - tar -jcvf short-service.tar.bz2 ./short-service
 - scp -o stricthostkeychecking=no short-service.tar.bz2 root@${REMOTE_IP}:~/
-- ssh root@${REMOTE_IP} 'tar -jxvf short-service.tar.bz2 -C ./go/src/ && cd ./go/src/short-service/ && make build && make run'
-
+- ssh root@${REMOTE_IP} 'tar -jxvf short-service.tar.bz2 -C ./go/src/ && cd ./go/src/short-service/'
+after_success:
+- ssh root@${REMOTE_IP} 'make build'
 branches:
   only:
   - master
