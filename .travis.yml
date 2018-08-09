@@ -1,6 +1,3 @@
-language: go
-  go:
-    - master
 addons:
   apt:
     packages:
