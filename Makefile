@@ -14,5 +14,5 @@ run:
 	docker run \
     	--name short-service2 \
         --link redis:redis \
-        -p 8000:8001 \
+        -p 8001:8000 \
         -d short-service
