@@ -9,10 +9,9 @@ run:
         --link redis:redis \
         -p 8000:8000 \
         -d short-service
-
-    docker stop short-service2
-    docker rm short-service2
-    docker run \
+	docker stop short-service2
+	docker rm short-service2
+	docker run \
     	--name short-service2 \
         --link redis:redis \
         -p 8000:8001 \
